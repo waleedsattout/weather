@@ -1,0 +1,19 @@
+<section>
+    <div style="cursor: not-allowed;">
+        <img style="margin-left: 1rem; width: 2.5rem;" src="./assets/icons/bar.svg" alt="">
+    </div>
+    <input placeholder="Search your location" #input type="text" class="search-input" name="" id="" [(ngModel)]="query"
+        (keyup)="keyUp($event)" [ngClass]="notRounded">
+    <ng-container *ngIf="results.length !==0">
+        <div class="result">
+            <ng-container *ngFor="let d of results | weatherPipe:{ isDaily: false, type: '', trim: 24, search: true }">
+                <p (click)="geo($event)">
+                    <span class="d-none">
+                        {{[stringify(d[1])]}}
+                    </span>
+                    {{ [d[0]] }}
+                </p>
+            </ng-container>
+        </div>
+    </ng-container>
+</section>

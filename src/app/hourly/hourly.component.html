@@ -1,0 +1,23 @@
+<section>
+    <div class="overlay"></div>
+    <img src="{{[getIcon(hourlyData[5], hourlyData[7])]}}" alt="">
+    <div>
+        <span>
+            {{[round(hourlyData[1])]}}
+        </span>
+        <img src="{{[getIcon('', hourlyData[7], 'celsius.svg')]}}" alt="">
+        <img src="{{[getIcon('', hourlyData[7], 'thermometer.svg')]}}" alt="">
+    </div>
+    <div>
+        <span>
+            {{[round(hourlyData[4])]}}
+        </span>
+        <img src="{{[getIcon('', hourlyData[7], 'percentage.svg')]}}" alt="">
+        <img src="{{[getIcon('', hourlyData[7], 'raindrops.svg')]}}" alt="">
+    </div>
+    <hr class="my-2">
+    <div class="mx-auto" style="width: fit-content;">
+        {{[fixDate(hourlyData[0]).getHours()]}}
+        {{[fixDate(hourlyData[0]).toLocaleTimeString().split(' ')[1]]}}
+    </div>
+</section>

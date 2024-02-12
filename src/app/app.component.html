@@ -1,0 +1,5 @@
+<section>
+    <app-search-bar (objectChanged)="setLatLng($event)"></app-search-bar>
+    <app-overview [weatherCodes]="weatherCodes" [weatherData]="weatherData"></app-overview>
+    <app-prediction [weatherCodes]="weatherCodes" [weatherData]="weatherData"></app-prediction>
+</section>

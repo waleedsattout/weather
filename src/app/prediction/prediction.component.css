@@ -1,0 +1,126 @@
+@media screen and (max-width: 768px) {
+  .t-container {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .t-container {
+    max-height: 75%;
+    width: 100%;
+    margin: auto;
+  }
+}
+
+* {
+  user-select: none;
+}
+
+section {
+  background-color: var(--md-sys-color-surface-3);
+  color: var(--md-sys-color-on-surface-variant);
+  border-radius: 1rem;
+  padding: 2rem;
+  position: relative;
+  height: 100%;
+}
+
+.overflow-x-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+#scrollHours.overflow-x-scroll {
+  position: relative;
+  cursor: grab;
+  scroll-behavior: smooth;
+  object-fit: cover;
+  scroll-snap-type: x mandatory;
+}
+
+#scrollHours.overflow-x-scroll > * {
+  scroll-snap-align: center;
+}
+
+.flow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-2.5rem, -50%);
+  background: var(--md-sys-color-error-container);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  opacity: 1;
+  z-index: 99;
+  box-shadow: 0 0 100px 1px #000a;
+  transition: opacity 0.7s, width 0.5s;
+  width: 6%;
+}
+
+.flow > * {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  padding: 1rem;
+}
+
+.flow img:last-of-type {
+  transform: translateX(20%);
+  transition: transform 0.5s, opacity 0.7s;
+}
+
+img.none {
+  transform: translateX(200%) !important;
+  opacity: 0;
+}
+
+.flow.none.hide {
+  opacity: 0;
+}
+
+.flow.hide {
+  width: 12rem;
+}
+
+.w-icon {
+  min-width: 2.5rem;
+  background: var(--md-sys-color-inverse-on-surface);
+}
+
+td {
+  background-color: var(--md-sys-color-surface-2);
+  color: var(--md-sys-color-on-background);
+  vertical-align: middle;
+  white-space: nowrap;
+  line-height: 2;
+}
+
+tr:first-of-type td:first-of-type {
+  border-top-left-radius:1rem ;
+}
+
+tr:first-of-type td:last-of-type {
+  border-top-right-radius:1rem ;
+}
+
+tr:last-of-type td:first-of-type {
+  border-bottom-left-radius:1rem ;
+}
+
+tr:last-of-type td:last-of-type {
+  border-bottom-right-radius:1rem ;
+}
+
+.celsius {
+  margin-left: 12% !important;
+}
+
+td img {
+  height: 100%;
+  min-width: 1.5rem;
+  margin: auto;
+  display: block;
+}
+
+td * {
+  max-height: 2.5rem;
+}

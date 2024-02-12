@@ -1,0 +1,77 @@
+<section class="d-flex main">
+    <ng-container *ngIf="weatherData">
+        <span class="badge">
+            {{ [fixDate(weatherData.current.time).getDate()] }}/{{ [fixDate(weatherData.current.time).getMonth()+1
+            ]}}/{{ [fixDate(weatherData.current.time).getFullYear()]}}
+        </span>
+        <div class="container status">
+            <img src="{{[getIcon(weatherData.current.weatherCode, weatherData.current.isDay)]}}" alt="">
+        </div>
+
+        <div class="d-flex container flex-column flex-wrap">
+            <div class="d-flex align-contents-center">
+                <span *ngIf="largeScreen" class="w-label">
+                    Wind
+                </span>
+                <span>
+                    {{[round(weatherData.current.windSpeed10m)]}}
+                </span>
+                <div class="h-100">
+                    <img src="{{[getIcon(kmhToBeaufort(round(weatherData.current.windSpeed10m)), weatherData.current.isDay)]}}"
+                        alt="">
+                </div>
+            </div>
+
+            <div class="d-flex align-contents-center">
+                <span *ngIf="largeScreen" class="w-label">
+                    Temperature
+                </span>
+                <span>
+                    {{[round(weatherData.current.temperature2m)]}}
+                </span>
+                <div class="h-100" style="scale:.75">
+                    <img src="{{[getIcon(1000,0,'celsius.svg')]}}" alt="">
+                </div>
+            </div>
+
+            <div class="d-flex align-contents-center">
+                <span *ngIf="largeScreen" class="w-label">
+                    Apparent Temperature
+                </span>
+                <span>
+                    {{[round(weatherData.current.apparentTemperature)]}}
+                </span>
+                <div class="h-100">
+                    <img src="{{[getIcon(1000,0,'thermometer-celsius.svg')]}}" alt="">
+                </div>
+            </div>
+
+            <div class="d-flex align-contents-center">
+                <span *ngIf="largeScreen" class="w-label">
+                    Cloud Cover
+                </span>
+                <span class="pe-0">
+                    {{weatherData.current.cloudCover}}
+                    <img src="{{[getIcon(1000,0,'percentage.svg')]}}" style="width: 1.5rem;" alt="">
+                </span>
+                <div class="h-100 ps-0">
+                    <img src="{{[getIcon(1000,0,'cloudy.svg')]}}" alt="">
+                </div>
+            </div>
+
+            <div class="d-flex align-contents-center" style="white-space: nowrap;">
+                <span *ngIf="largeScreen" class="w-label">
+                    Wind Direction:
+                    {{[fixWindDirection(weatherData.current.windDirection10m)[0]]}}
+                </span>
+                <span class="pe-0">
+                    <img src="{{[getIcon(1000,0,fixWindDirection(weatherData.current.windDirection10m)[1])]}}"
+                        style="width: 1.5rem;height: 1.5rem;" alt="">
+                </span>
+                <div class="h-100 ps-0">
+                    <img src="{{[getIcon(1000,0,'compass.svg')]}}" alt="">
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</section>

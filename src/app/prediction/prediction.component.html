@@ -1,0 +1,35 @@
+<ng-container *ngIf="weatherData && weatherCodes">
+    <section>
+        <div class="d-flex overflow-x-scroll flex-row" id="scrollHours">
+            <div #flow class="flow" id="flow">
+                <img src="{{[getIcon('',0, 'arrow-container.svg')]}}" alt="">
+                <img src="{{[getIcon('',0, 'arrow-right.svg')]}}" alt="">
+            </div>
+            <ng-container
+                *ngFor="let condition of weatherData.hourly | weatherPipe:{type:'hourly', isDaily:false, trim:24, search:false}">
+                <app-hourly (mousedown)="handleDrag($event, true)" (mouseup)="handleDrag($event, false)"
+                    [hourlyData]="condition"></app-hourly>
+            </ng-container>
+        </div>
+        <hr>
+        <div class="t-container overflow-x-scroll">
+            <table class="w-max-content table table-hover">
+                <tbody>
+                    <tr
+                        *ngFor="let condition of weatherData.daily | weatherPipe:{type:'daily', isDaily:true, trim:24, search:false}">
+                        <td>
+                            {{[fixDate(condition[0]).getFullYear()]}}-{{[fixDate(condition[0]).getMonth()+1]}}-{{[fixDate(condition[0]).getDate()]}}
+                        </td>
+                        <td>{{[weatherCodes[condition[1]]]}}</td>
+                        <td class="w-icon"><img src="{{[getIcon(condition[1])]}}" alt=""></td>
+                        <td>{{[round(condition[2])]}} / {{[round(condition[3])]}}</td>
+                        <td class="w-icon"><img class="celsius" src="{{[getIcon('', 2,'celsius.svg')]}}" alt=""></td>
+                        <td>{{[condition[4]]}}</td>
+                        <td class="w-icon"><img src="{{[getIcon('', 2,'percentage.svg')]}}" alt="" style="scale: .75;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</ng-container>
